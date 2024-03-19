@@ -14,24 +14,15 @@ import config
 from pymongo import MongoClient
 
 
-# ==============================================================================================
-
-# -------------------------LOADING THE TRAINED MODELS -----------------------------------------------
-
-
-
-# Loading crop recommendation model
+#LOADING THE TRAINED MODELS 
+#Loading crop recommendation model
 
 crop_recommendation_model_path = 'NBClassifier.pkl'
 crop_recommendation_model = pickle.load(
     open(crop_recommendation_model_path, 'rb'))
 
 
-# =========================================================================================
-
 # Custom functions for calculations
-
-
 def weather_fetch(city_name):
     """
     Fetch and returns the temperature and humidity of a city
@@ -55,8 +46,7 @@ def weather_fetch(city_name):
         return None
 
 
-# ===============================================================================================
-# ------------------------------------ FLASK APP -------------------------------------------------
+#FLASK APP
 
 
 
@@ -170,6 +160,6 @@ def fert_recommend():
 
     response = Markup(str(fertilizer_dic[key]))
     return render_template('fertilizer-result.html', recommendation=response, title=title)
-# ===============================================================================================
+
 if __name__ == '__main__':
         app.run(debug=False)
